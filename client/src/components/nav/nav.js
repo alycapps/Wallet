@@ -1,5 +1,6 @@
 import React from "react";
 
+// Generic navbar for top of all pages
 class Nav extends React.Component {
   render () {
     return (

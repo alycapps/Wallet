@@ -1,3 +1,7 @@
+# Digital Wallet
+This is a simple database template that could be modified to help users keep track of their credit card information. 
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

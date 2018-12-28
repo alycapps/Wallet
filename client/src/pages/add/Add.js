@@ -18,17 +18,17 @@ class Add extends Component {
     exp: "",
     cvv: ""
   };
-
+  
+  // function to change states
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
-    console.log(this.state)
   };
 
+  // function to confirm all fields have data
   validateBlank = () => {
-    console.log('button clicked')
     if(this.state.name && this.state.cvv && this.state.exp && this.state.number) {
       this.validateLetters();
     }
@@ -37,6 +37,7 @@ class Add extends Component {
     }
   };
 
+  // function to confirm that the name field only contains letters and spaces
   validateLetters = () => {
     let nameval = document.getElementById('name').value;
     if(!nameval.match(/^[a-zA-Z\s]*$/)) {
@@ -47,6 +48,7 @@ class Add extends Component {
     }
   };
 
+  // function to confirm number and cvv field only contain numbers
   validateNumbers = () => {
     let numval = document.getElementById('number').value;
     let cvvval = document.getElementById('cvv').value;
@@ -62,6 +64,7 @@ class Add extends Component {
       }    }
   };
 
+  // function to confirm length of name and cvv fields
   validateLength = () => {
     let cvvval = document.getElementById('cvv').value;
     let numval = document.getElementById('number').value;
@@ -78,6 +81,7 @@ class Add extends Component {
       }
   };
 
+  // function to confirm format of expiration field
   validateFormat = () => {
     let expval = document.getElementById('exp').value;
     if(!expval.match(/^(0[1-9]|1[0-2])\/\d{2}$/)) {
@@ -88,8 +92,8 @@ class Add extends Component {
     }
   }
 
+  // function to actually add the card to Mongo
   addCard = () => {
-    console.log(this.state)
     const cardInfo = {
       name: this.state.name,
       number: this.state.number,
@@ -108,6 +112,7 @@ class Add extends Component {
     });
   };
 
+  // function to empty contents of form
   clearForm = () => {
     this.setState({
       name: "",
@@ -115,7 +120,6 @@ class Add extends Component {
       exp: "",
       cvv: ""
 		});
-    console.log(this.state);
   };
 
   render() {

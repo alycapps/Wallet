@@ -17,7 +17,7 @@ export default {
   deleteCard: function(id) {
     return axios.delete("/api/cards/" + id);
   },
-  // Saves a book to the database
+  // Saves a card to the database
   saveCard: function(cardInfo) {
     return axios.post("/api/cards", cardInfo);
   }

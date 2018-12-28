@@ -20,6 +20,7 @@ class All extends Component {
     this.loadCards();
   };
 
+  // function to load all cards
   loadCards = () => {
     API.getCards()
       .then(res =>
@@ -29,6 +30,7 @@ class All extends Component {
       .catch(err => console.log(err));
   };
 
+  // function to delete specified card from Mongo
   deleteCard = id => {
     API.deleteCard(id)
       .then(res => this.loadCards())
@@ -42,7 +44,7 @@ class All extends Component {
         <Grid>
         {this.state.cards.length ? (
           <Row>
-            {/* Details for each Credit Card added to card*/}
+            {/* Details for each Credit Card added to card */}
               { this.state.cards.map( card => (
                 <Col md={4}>
                   <Card>
