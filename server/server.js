@@ -15,6 +15,9 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+console.log('consts defined')
+
+
 // Middlewares
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: true}));
@@ -25,6 +28,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));
+
+console.log('middleware done')
 
 // If production environment
 if (process.env.NODE_ENV === 'production') {
