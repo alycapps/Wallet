@@ -7,6 +7,10 @@ import Col from "react-bootstrap/lib/Col";
 import ButtonToolBar from "react-bootstrap/lib/ButtonToolbar";
 import Button from "react-bootstrap/lib/Button";
 
+let style = {
+  color: 'red',
+};
+
 class All extends Component {
   state = {
     cards: []
@@ -65,7 +69,7 @@ class All extends Component {
               </Row>
 
             ) : (
-              <h3> No Cards Saved - please go to the add page to save your cards. </h3>
+              <h3 style={style}> No Cards Saved - please go to the add page to save your cards. </h3>
           )}
         </Grid>
       </div>
