@@ -34,6 +34,18 @@ class Add extends Component {
     }
     API.saveCard(cardInfo).then(res => {
         console.log(res, "This is the response from card info");
+          let inp = document.getElementById("inputLoc");
+          let message = document.createElement("div");
+        if (res.status === 200) {
+          message.innerHTML = "Card succesfully added";
+          inp.appendChild(message);
+          inp.insertBefore(message, inp.firstChild);
+        }
+        else {
+          message.innerHTML = "There was a problem saving your card";
+          inp.appendChild(message);
+          inp.insertBefore(message, inp.firstChild);
+        }
     });
   }
 
@@ -47,7 +59,7 @@ class Add extends Component {
             </Col>
             <Col md={8}>
               <Card>
-                <form>
+                <form id="inputLoc">
                   <label htmlFor="name">Full Name: </label>
                   <input
                   type="text"

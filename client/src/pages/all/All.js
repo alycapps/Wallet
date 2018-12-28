@@ -14,7 +14,7 @@ class All extends Component {
 
   componentDidMount() {
     this.loadCards();
-  }
+  };
 
   loadCards = () => {
     API.getCards()
@@ -23,38 +23,50 @@ class All extends Component {
         console.log(this.state.cards)
         )
       .catch(err => console.log(err));
-  }
+  };
+
+  deleteCard = id => {
+    API.deleteCard(id)
+      .then(res => this.loadCards())
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
       <div>
         <h1>My Cards</h1>
         <Grid>
+        {this.state.cards.length ? (
           <Row>
-            {/* Each Credit Card */}
-            <Col md={4}>
-              <Card>
-                <Row>
-                  <Col md={12} className="name">
-                    Aly Capps
-                  </Col>
-                  <Col md={12} className="number">
-                    1234567890
-                  </Col>
-                  <Col md={6} className="cvv">
-                    233
-                  </Col>
-                  <Col md={6} className="exp">
-                    12/21
-                  </Col>
-                  <ButtonToolBar>
-                    <Button bsStyle="danger">Delete</Button>
-                  </ButtonToolBar>
-                </Row>
-              </Card>
-            </Col>
+            {/* Details for each Credit Card added to card*/}
+              { this.state.cards.map( card => (
+                <Col md={4}>
+                  <Card>
+                    <Row>
+                      <Col md={12} className="name">
+                        {card.name}
+                      </Col>
+                      <Col md={12} className="number">
+                        {card.number}
+                      </Col>
+                      <Col md={6} className="cvv">
+                        {card.cvv}
+                      </Col>
+                      <Col md={6} className="exp">
+                        {card.exp}
+                      </Col>
+                      <ButtonToolBar>
+                        <Button bsStyle="danger" onClick={() => this.deleteCard(card._id)} >Delete</Button>
+                      </ButtonToolBar>
+                    </Row>
+                  </Card>
+                </Col>
+              ))}
+              </Row>
 
-          </Row>
+            ) : (
+              <h3> No Cards Saved - please go to the add page to save your cards. </h3>
+          )}
         </Grid>
       </div>
     );
